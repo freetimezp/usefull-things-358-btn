@@ -9,3 +9,50 @@
 a {
     text-decoration: none;
 }
+
+a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #141414;
+    text-transform: uppercase;
+    width: 240px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+a::before {
+    content: "";
+    width: 240px;
+    height: 120px;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    border-left: 2px solid #141414;
+    border-right: 2px solid #141414;
+    transition: 1s;
+}
+
+a::after {
+    content: "";
+    width: 280px;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    left: -20px;
+    border-top: 2px solid #141414;
+    border-bottom: 2px solid #141414;
+    transition: 1s;
+}
+
+a:hover::before {
+    transform: rotateY(180deg);
+}
+a:hover::after {
+    transform: rotateX(180deg);
+}
