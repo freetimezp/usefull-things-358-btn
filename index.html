@@ -9,7 +9,69 @@
     </head>
 
     <body>
-        <a href="#">Button</a>
+        <!-- BACKGROUND LAYERS -->
+        <div class="bg grid"></div>
+        <div class="bg glow"></div>
+
+        <!-- INK DROPS -->
+        <div class="ink-container">
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+        </div>
+        <svg class="ink-lines"></svg>
+
+        <!-- FLOATING DATA PANELS -->
+        <div class="panel p1">STATUS: ONLINE</div>
+        <div class="panel p2">NODE: STABLE</div>
+        <div class="panel p3">FPS: 60</div>
+
+        <!-- CURSOR -->
+        <div class="cursor"></div>
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo">EVA/SYSTEM</div>
+
+            <nav class="menu">
+                <a href="#">Home</a>
+                <a href="#">Work</a>
+                <a href="#">Data</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <h1 class="title">SPECIAL INTERFACE</h1>
+
+            <p class="desc">A spatial UI system driven by motion, depth and interactive physics.</p>
+
+            <a href="#" class="cta magnetic">ENTER SYSTEM</a>
+        </section>
+
+        <!-- MODAL -->
+        <div class="modal-overlay"></div>
+
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">SYSTEM NODE</h2>
+                <span class="close">×</span>
+            </div>
+
+            <div class="modal-content">
+                <p class="modal-text"></p>
+            </div>
+        </div>
+
+        <!-- GSAP -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+        <!-- SplitType -->
+        <script src="https://unpkg.com/split-type"></script>
 
         <script src="./assets/js/main.js"></script>
     </body>

@@ -1,58 +1,252 @@
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    list-style: none;
-    list-style-type: none;
 }
 
-a {
-    text-decoration: none;
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7f5;
+    overflow: hidden;
+    color: #111;
 }
 
-a {
+/* ===== BACKGROUND ===== */
+.bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.grid {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.glow {
+    background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.08), transparent 60%);
+}
+
+.grid,
+.glow {
+    pointer-events: none;
+}
+
+.ink-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* DROPS */
+.drop {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #141414;
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    filter: blur(0.2px);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+}
+
+.ink-lines {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.ink-lines line {
+    stroke: rgba(0, 0, 0, 0.25);
+    stroke-width: 1;
+}
+
+/* ===== HEADER ===== */
+.header {
+    position: fixed;
+    top: 30px;
+    left: 40px;
+    right: 40px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.logo {
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.menu {
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    color: #111;
+    font-size: 12px;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    position: relative;
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #111;
+    transition: 0.3s;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+/* ===== HERO ===== */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* TITLE */
+.title {
+    font-size: clamp(40px, 6vw, 110px);
+    letter-spacing: 6px;
+}
+
+/* DESC */
+.desc {
+    max-width: 600px;
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+/* CTA */
+.cta {
+    margin-top: 50px;
     width: 240px;
     height: 80px;
     line-height: 80px;
     text-align: center;
-    font-size: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    letter-spacing: 3px;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    position: relative;
+    color: #111;
 }
 
-a::before {
-    content: "";
-    width: 240px;
-    height: 120px;
-    position: absolute;
-    top: -20px;
-    left: 0;
-    border-left: 2px solid #141414;
-    border-right: 2px solid #141414;
-    transition: 1s;
+/* ===== FLOATING PANELS ===== */
+.panel {
+    position: fixed;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 10px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+
+    z-index: 100;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: 0.5s;
 }
 
-a::after {
-    content: "";
-    width: 280px;
-    height: 80px;
-    position: absolute;
-    top: 0;
-    left: -20px;
-    border-top: 2px solid #141414;
-    border-bottom: 2px solid #141414;
-    transition: 1s;
+.panel:hover {
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-a:hover::before {
-    transform: rotateY(180deg);
+.p1 {
+    top: 120px;
+    left: 60px;
 }
-a:hover::after {
-    transform: rotateX(180deg);
+.p2 {
+    top: 200px;
+    right: 80px;
+}
+.p3 {
+    bottom: 120px;
+    left: 120px;
+}
+
+/* ===== CURSOR ===== */
+.cursor {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #111;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* ===== MODAL OVERLAY ===== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+
+    z-index: 80;
+}
+
+/* ===== MODAL BOX ===== */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 420px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    pointer-events: none;
+
+    z-index: 90;
+}
+
+/* HEADER */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+/* CLOSE */
+.close {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* TEXT */
+.modal-text {
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.8;
 }
